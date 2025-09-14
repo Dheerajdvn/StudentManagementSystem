@@ -16,6 +16,21 @@ A complete full-stack **Student Management System** built using:
 ✅ Reusable JSPF includes  
 ✅ Secure Oracle DB Connection using `driverinfo.properties`
 
+## 🖼️ Screenshots
+
+### Student Sign Up
+![Student Sign Up](screenshots/signup.png)
+
+### Student Login
+![Student Login](screenshots/login.png)
+
+### Edit Student
+![Edit Student](screenshots/Edit.png)
+
+### Student Dashboard
+![Student Dashboard](screenshots/dashboard.png)
+
+
 ## 🛠️ Technologies Used
 
 - Java 17+

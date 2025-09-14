@@ -1,0 +1,8 @@
+<%@ page import="com.student.model.Student" %>
+<%
+    Student loggedInStudent = (Student) session.getAttribute("student");
+    if (loggedInStudent == null) {
+        response.sendRedirect("login");
+        return;
+    }
+%>

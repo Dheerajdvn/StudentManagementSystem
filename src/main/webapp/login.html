@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Student Login - Student Management System</title>
+<style>
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	font-family: 'Arial', sans-serif;
+	background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+	min-height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.login-container {
+	background: white;
+	padding: 40px;
+	border-radius: 10px;
+	box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+	width: 100%;
+	max-width: 400px;
+}
+
+.login-header {
+	text-align: center;
+	margin-bottom: 30px;
+}
+
+.login-header h1 {
+	color: #333;
+	font-size: 28px;
+	margin-bottom: 10px;
+}
+
+.login-header p {
+	color: #666;
+	font-size: 14px;
+}
+
+.form-group {
+	margin-bottom: 20px;
+}
+
+label {
+	display: block;
+	margin-bottom: 5px;
+	color: #333;
+	font-weight: 500;
+}
+
+input[type="email"], input[type="password"] {
+	width: 100%;
+	padding: 12px;
+	border: 2px solid #ddd;
+	border-radius: 5px;
+	font-size: 16px;
+	transition: border-color 0.3s ease;
+}
+
+input[type="email"]:focus, input[type="password"]:focus {
+	outline: none;
+	border-color: #667eea;
+}
+
+.btn {
+	width: 100%;
+	padding: 12px;
+	background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+	color: white;
+	border: none;
+	border-radius: 5px;
+	font-size: 16px;
+	cursor: pointer;
+	transition: transform 0.2s ease;
+}
+
+.btn:hover {
+	transform: translateY(-2px);
+}
+
+.alert {
+	padding: 10px;
+	border-radius: 5px;
+	margin-bottom: 20px;
+	text-align: center;
+}
+
+.alert-error {
+	background-color: #f8d7da;
+	color: #721c24;
+	border: 1px solid #f5c6cb;
+}
+
+.alert-success {
+	background-color: #d4edda;
+	color: #155724;
+	border: 1px solid #c3e6cb;
+}
+
+.demo-credentials {
+	background: #f8f9fa;
+	padding: 15px;
+	border-radius: 5px;
+	margin-bottom: 20px;
+	border-left: 4px solid #667eea;
+}
+
+.demo-credentials h3 {
+	color: #333;
+	margin-bottom: 10px;
+	font-size: 14px;
+}
+
+.demo-credentials p {
+	color: #666;
+	font-size: 12px;
+	margin: 5px 0;
+}
+</style>
+</head>
+<body>
+	<div class="login-container">
+		<div class="login-header">
+			<h1>Student Login</h1>
+			<p>Welcome to Student Management System</p>
+		</div>
+		<div id="alertContainer"></div>
+		<div class="demo-credentials">
+			<h3>Demo Credentials:</h3>
+			<p>
+				<strong>Email:</strong> john.doe@example.com
+			</p>
+			<p>
+				<strong>Password:</strong> password123
+			</p>
+			<p style="font-style: italic; margin-top: 10px;">Create this user
+				in your database first!</p>
+		</div>
+		<form id="loginForm" method="post" action="login">
+			<div class="form-group">
+				<label for="email">Email Address</label> <input type="email"
+					id="email" name="email" required>
+			</div>
+			<div class="form-group">
+				<label for="password">Password</label> <input type="password"
+					id="password" name="password" required>
+			</div>
+			<button type="submit" class="btn">Login</button>
+		</form>
+		<p style="text-align: center; margin-top: 10px;">
+			Don't have an account? <a href="signup.jsp">Sign Up</a>
+		</p>
+
+	</div>
+	<script>
+		// Display URL parameters as alerts function getUrlParameter(name) { name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]'); var regex = new RegExp('[\\?&]' + name + '=([^&#]*)'); var results = regex.exec(location.search); return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' ')); } function showAlert(message, type) { const alertContainer = document.getElementById('alertContainer'); const alertDiv = document.createElement('div'); alertDiv.className = alert alert-${type}; alertDiv.textContent = message; alertContainer.appendChild(alertDiv); } // Check for error or message parameters const error = getUrlParameter('error'); const message = getUrlParameter('message'); if (error) { showAlert(error, 'error'); } if (message) { showAlert(message, 'success'); } // Form validation document.getElementById('loginForm').addEventListener('submit', function(e) { const email = document.getElementById('email').value.trim(); const password = document.getElementById('password').value.trim(); if (!email || !password) { e.preventDefault(); showAlert('Please fill in all fields', 'error'); return false; } // Basic email validation const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; if (!emailPattern.test(email)) { e.preventDefault(); showAlert('Please enter a valid email address', 'error'); return false; } });
+	</script>
+</body>
+</html>
